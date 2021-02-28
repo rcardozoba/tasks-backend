@@ -43,5 +43,13 @@ pipeline {
                 }
             }
         }
+        stage ('Functional Test') {
+            steps {
+                dir('functional-test') {
+                git credentialsId: 'f71db921-aa15-4772-9cbc-c096edfadc5d', url: 'https://github.com/rcardozoba/tasks-functional-tests'
+                bat 'mvn test'
+                }
+            }
+        }
     }
 }
